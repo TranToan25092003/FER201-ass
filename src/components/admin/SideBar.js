@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../../css/admin.css";
 
 import { Link } from "react-router-dom";
 function SideBar() {
   const [active, setActive] = useState(1);
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Lấy dữ liệu người dùng từ localStorage
+    const storedUser = JSON.parse(localStorage.getItem("accounts"));
+    if (storedUser) {
+      setUsername(storedUser.username); // Cập nhật state với username
+    }
+  }, []);
 
   return (
     <div className="sidebar d-flex justify-content-between flex-column bg-dark text-white py-3 ps-3 pe-5 vh-100">
@@ -71,7 +80,7 @@ function SideBar() {
           <span className="p-1 text-decoration-none text-white">
             <i className="bi bi-person-circle me-3 fs-5"></i>
             <span className="fs-4">
-              <strong>Hieu</strong>
+              <strong>{username || "Guest"}</strong>
             </span>
           </span>
         </div>

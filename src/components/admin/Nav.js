@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-
+import ProfileDropDown from '../reusable/logout.js';
+import { BsFillPersonFill, BsCartCheckFill, BsAmazon } from "react-icons/bs";
+import { Col } from "react-bootstrap";
 function Nav({ Toggle, className }) {
+  const [show, setShow] = useState(false);
   return (
     <div>
       <nav
@@ -28,17 +31,12 @@ function Nav({ Toggle, className }) {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              
               <li className="nav-item border rounded">
-                <a className="nav-link text-white" aria-current="page" href="#">
-                  <i className="bi bi-search"></i> Search
-                </a>
-              </li>
-              <li className="nav-item border rounded">
-                <a className="nav-link text-white" aria-current="page" href="#">
-                  Logout
-                </a>
+              <BsFillPersonFill className="hover-item" size={25} onClick={() => setShow(!show)} />
               </li>
             </ul>
+            {show && <ProfileDropDown />}
           </div>
         </div>
       </nav>
