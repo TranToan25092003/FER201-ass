@@ -78,8 +78,8 @@
           "name": "ps5s_2.png"
         }
       ],
-      "status": true,
-      "quantity": 3,
+      "status": false,
+      "quantity": 0,
       "catId": 1,
       "description": "CPU: 8x Zen 2 Cores at 3.5GHz - GPU: 10.28 TFLOPs, 36 CUs at 2.23GHz - RAM: 16GB GDDR6 - Storage: 825GB SSD"
     },
@@ -102,7 +102,7 @@
         }
       ],
       "status": true,
-      "quantity": 3,
+      "quantity": 1,
       "catId": 1,
       "description": "CPU: 8x Zen 2 Cores at 3.5GHz - GPU: 10.28 TFLOPs, 36 CUs at 2.23GHz - RAM: 16GB GDDR6 - Storage: 825GB SSD"
     },
@@ -148,7 +148,7 @@
         }
       ],
       "status": true,
-      "quantity": 3,
+      "quantity": 2,
       "catId": 2,
       "description": "CPU: 8x Zen 2 Cores at 3.5GHz - GPU: 10.28 TFLOPs, 36 CUs at 2.23GHz - RAM: 16GB GDDR6 - Storage: 825GB SSD"
     },
@@ -197,6 +197,14 @@
       "quantity": 4,
       "catId": 3,
       "description": "CPU: 8x Zen 2 Cores at 3.5GHz - GPU: 10.28 TFLOPs, 36 CUs at 2.23GHz - RAM: 16GB GDDR6 - Storage: 825GB SSD - High speed of fan"
+    },
+    {
+      "id": "b635",
+      "name": "123123",
+      "price": 123123,
+      "quantity": 123,
+      "catId": 1,
+      "status": true
     }
   ],
   "user": [
@@ -288,6 +296,17 @@
       "fullname": "Le Hieu",
       "gender": true,
       "dob": "2024-07-12",
+      "status": true,
+      "role": 1
+    },
+    {
+      "id": "81",
+      "username": "example9999@gmail.com",
+      "email": "example9999@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "fullname": "example9999@gmail.com",
+      "gender": true,
+      "dob": "2025-03-20",
       "status": true,
       "role": 1
     }
@@ -456,6 +475,104 @@
         }
       ],
       "total": 64980000
+    },
+    {
+      "id": "24a5",
+      "oDate": "2025-03-19",
+      "rDate": "2025-03-20",
+      "status": "processing",
+      "user": {
+        "uid": "6",
+        "fname": "1111",
+        "lname": "11111",
+        "address": "111111",
+        "mobile": "0123456789",
+        "uemail": "user@gmail.com"
+      },
+      "product": [
+        {
+          "pid": "3",
+          "pname": "Playstation 5 slim + free game",
+          "price": 6990000,
+          "quantity": 2
+        },
+        {
+          "pid": "4",
+          "pname": "Playstation 4",
+          "price": 57990000,
+          "quantity": 1
+        }
+      ],
+      "total": 71970000
+    },
+    {
+      "id": "3ea9",
+      "oDate": "2025-03-20",
+      "rDate": "2025-03-13",
+      "status": "processing",
+      "user": {
+        "uid": "81",
+        "fname": "123",
+        "lname": "123",
+        "address": "123",
+        "mobile": "0123456789",
+        "uemail": "example9999@gmail.com"
+      },
+      "product": [
+        {
+          "pid": "4",
+          "pname": "Playstation 4",
+          "price": 57990000,
+          "quantity": 1
+        }
+      ],
+      "total": 57990000
+    },
+    {
+      "id": "3912",
+      "oDate": "2025-03-20",
+      "rDate": "2025-03-13",
+      "status": "processing",
+      "user": {
+        "uid": "6",
+        "fname": "1111",
+        "lname": "11111",
+        "address": "111111",
+        "mobile": "0123456789",
+        "uemail": "user@gmail.com"
+      },
+      "product": [
+        {
+          "pid": "3",
+          "pname": "Playstation 5 slim + free game",
+          "price": 6990000,
+          "quantity": 1
+        }
+      ],
+      "total": 6990000
+    },
+    {
+      "id": "45c2",
+      "oDate": "2025-03-20",
+      "rDate": "2025-03-20",
+      "status": "processing",
+      "user": {
+        "uid": "6",
+        "fname": "1111",
+        "lname": "11111",
+        "address": "111111",
+        "mobile": "0123456789",
+        "uemail": "user@gmail.com"
+      },
+      "product": [
+        {
+          "pid": "6",
+          "pname": "FC24",
+          "price": 13290000,
+          "quantity": 1
+        }
+      ],
+      "total": 13290000
     }
   ],
   "problems": [
@@ -464,6 +581,13 @@
       "email": "student@example.com",
       "username": "student",
       "problem": "áddasd",
+      "status": false
+    },
+    {
+      "id": "4ba6",
+      "email": "example9999@gmail.com",
+      "username": "example9999@gmail.com",
+      "problem": "q123123",
       "status": false
     }
   ]

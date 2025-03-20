@@ -12,6 +12,7 @@ import { useCartFetch } from "../../hooks/cart.hook";
 import { SectionCart } from "./components/sectionCart";
 import { FormCheckOut } from "./components/formCheckOut";
 import { Bounce, toast } from "react-toastify";
+import { useElements, useStripe, CardElement } from "@stripe/react-stripe-js";
 
 function Cart() {
   const [show, setShow] = useState(false);
@@ -118,8 +119,26 @@ function Cart() {
    * submit form
    * ====================================
    */
+
+  const stripe = useStripe();
+  const elements = useElements();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!stripe || !elements) return;
+
+    const test = elements.getElement(CardElement);
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: test,
+    });
+
+    if (error) {
+      toast.error("Make sure your cart credit is correct");
+      return;
+    }
 
     const user = JSON.parse(localStorage.getItem("accounts"));
 
@@ -254,6 +273,7 @@ function Cart() {
         setFormData={setFormData}
         handleSubmit={handleSubmit}
         calculateTotal={calculateTotal}
+        stripe={stripe}
       />
       <section className="section-name bg padding-y">
         <div className="container">

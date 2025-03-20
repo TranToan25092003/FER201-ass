@@ -10,6 +10,8 @@ import DashBoard from "./components/admin/DashBoard/DashBoard";
 import ProductList from "./components/admin/Product/ProductList";
 import Userprofile from "./components/userprofile";
 import { ToastContainer } from "react-toastify";
+import StripeProvider from "./components/stripe";
+import CheckoutForm from "./components/CheckoutForm";
 function App() {
   return (
     <BrowserRouter>
@@ -19,12 +21,27 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products/:id" element={<Detail />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <StripeProvider>
+              <Cart />
+            </StripeProvider>
+          }
+        />
         <Route path="/help" element={<Help />} />
         <Route path="/admin" element={<Admin />}>
           <Route path="productList" element={<ProductList />} />
           <Route path="dashboard" element={<DashBoard />} />
         </Route>
+        <Route
+          path="/checkout"
+          element={
+            <StripeProvider>
+              <CheckoutForm></CheckoutForm>
+            </StripeProvider>
+          }
+        />
         <Route path="/profile/:id" element={<Userprofile />} />
       </Routes>
     </BrowserRouter>
