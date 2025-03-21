@@ -15,7 +15,6 @@ import Header from "../reusable/header";
 import { login } from "../../service/apiproduct";
 import { useNavigate } from "react-router-dom";
 import "../../css/toast.css"; // Ensure custom CSS is imported
-import md5 from "md5";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -47,16 +46,23 @@ const Login = () => {
     }
 
     try {
-      const response = await login(email, md5(password));
+      const response = await login(email, password);
       console.log("Response from API:", response); // Check response from API
 
       if (response && response.length > 0) {
+        const user = response[0];
         localStorage.setItem("accounts", JSON.stringify(response[0]));
         setAlertVariant("success");
         setAlertMessage("Login successfully, redirecting...!");
         setShowAlert(true);
+
         setTimeout(() => {
-          navigate("/");
+          // Kiểm tra role để điều hướng trang phù hợp
+          if (user.role === 0) {
+            navigate("/admin"); // Nếu role = 0 -> Admin
+          } else {
+            navigate("/"); // Nếu role khác 0 -> Trang chủ
+          }
         }, 2000);
       } else {
         throw new Error("Incorrect email or password.");
