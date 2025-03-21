@@ -205,6 +205,76 @@
       "quantity": 123,
       "catId": 1,
       "status": true
+    },
+    {
+      "id": "9",
+      "name": "Xbox Series X",
+      "price": 59900000,
+      "images": [
+        { "id": 1, "name": "ps4c_1.jpg" },
+        { "id": 2, "name": "ps4c_1.jpg" }
+      ],
+      "status": true,
+      "quantity": 5,
+      "catId": 1,
+      "description": "CPU: 8x Zen 2 Cores at 3.8GHz - GPU: 12 TFLOPs, 52 CUs at 1.825GHz - RAM: 16GB GDDR6 - Storage: 1TB SSD",
+      "highlight": true
+    },
+    {
+      "id": "10",
+      "name": "Nintendo Switch OLED",
+      "price": 7990000,
+      "images": [
+        { "id": 1, "name": "ps4c_1.jpg" },
+        { "id": 2, "name": "ps4c_1.jpg" }
+      ],
+      "status": true,
+      "quantity": 3,
+      "catId": 2,
+      "description": "Màn hình OLED 7 inch - CPU/GPU: Nvidia Custom Tegra - RAM: 4GB - Bộ nhớ: 64GB",
+      "highlight": true
+    },
+    {
+      "id": "11",
+      "name": "PlayStation 5",
+      "price": 14990000,
+      "images": [
+        { "id": 1, "name": "ps4c_1.jpg" },
+        { "id": 2, "name": "ps4c_1.jpg" }
+      ],
+      "status": true,
+      "quantity": 10,
+      "catId": 1,
+      "description": "CPU: 8x Zen 2 Cores at 3.5GHz - GPU: 10.3 TFLOPs, 36 CUs at 2.23GHz - RAM: 16GB GDDR6 - Storage: 825GB SSD",
+      "highlight": true
+    },
+    {
+      "id": "12",
+      "name": "Gaming Laptop ASUS ROG",
+      "price": 49990000,
+      "images": [
+        { "id": 1, "name": "ps4c_1.jpg" },
+        { "id": 2, "name": "ps4c_1.jpg" }
+      ],
+      "status": true,
+      "quantity": 2,
+      "catId": 3,
+      "description": "CPU: Intel Core i9-11900H - GPU: RTX 3080 - RAM: 32GB DDR4 - Storage: 2TB SSD",
+      "highlight": true
+    },
+    {
+      "id": "13",
+      "name": "Steam Deck",
+      "price": 19990000,
+      "images": [
+        { "id": 1, "name": "ps4c_1.jpg" },
+        { "id": 2, "name": "ps4c_1.jpg" }
+      ],
+      "status": true,
+      "quantity": 8,
+      "catId": 2,
+      "description": "CPU: AMD Zen 2 4c/8t - GPU: 1.6 TFLOPs, RDNA 2 CUs - RAM: 16GB LPDDR5 - Storage: 512GB SSD",
+      "highlight": true
     }
   ],
   "user": [
