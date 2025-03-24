@@ -15,6 +15,7 @@ import Header from "../reusable/header";
 import { login } from "../../service/apiproduct";
 import { useNavigate } from "react-router-dom";
 import "../../css/toast.css"; // Ensure custom CSS is imported
+import md5 from "md5";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const Login = () => {
     }
 
     try {
-      const response = await login(email, password);
+      const response = await login(email, md5(password));
       console.log("Response from API:", response); // Check response from API
 
       if (response && response.length > 0) {

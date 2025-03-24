@@ -211,8 +211,14 @@
       "name": "Xbox Series X",
       "price": 59900000,
       "images": [
-        { "id": 1, "name": "ps4c_1.jpg" },
-        { "id": 2, "name": "ps4c_1.jpg" }
+        {
+          "id": 1,
+          "name": "ps4c_1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ps4c_1.jpg"
+        }
       ],
       "status": true,
       "quantity": 5,
@@ -225,8 +231,14 @@
       "name": "Nintendo Switch OLED",
       "price": 7990000,
       "images": [
-        { "id": 1, "name": "ps4c_1.jpg" },
-        { "id": 2, "name": "ps4c_1.jpg" }
+        {
+          "id": 1,
+          "name": "ps4c_1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ps4c_1.jpg"
+        }
       ],
       "status": true,
       "quantity": 3,
@@ -239,8 +251,14 @@
       "name": "PlayStation 5",
       "price": 14990000,
       "images": [
-        { "id": 1, "name": "ps4c_1.jpg" },
-        { "id": 2, "name": "ps4c_1.jpg" }
+        {
+          "id": 1,
+          "name": "ps4c_1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ps4c_1.jpg"
+        }
       ],
       "status": true,
       "quantity": 10,
@@ -253,8 +271,14 @@
       "name": "Gaming Laptop ASUS ROG",
       "price": 49990000,
       "images": [
-        { "id": 1, "name": "ps4c_1.jpg" },
-        { "id": 2, "name": "ps4c_1.jpg" }
+        {
+          "id": 1,
+          "name": "ps4c_1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ps4c_1.jpg"
+        }
       ],
       "status": true,
       "quantity": 2,
@@ -267,8 +291,14 @@
       "name": "Steam Deck",
       "price": 19990000,
       "images": [
-        { "id": 1, "name": "ps4c_1.jpg" },
-        { "id": 2, "name": "ps4c_1.jpg" }
+        {
+          "id": 1,
+          "name": "ps4c_1.jpg"
+        },
+        {
+          "id": 2,
+          "name": "ps4c_1.jpg"
+        }
       ],
       "status": true,
       "quantity": 8,
@@ -379,6 +409,17 @@
       "dob": "2025-03-20",
       "status": true,
       "role": 0
+    },
+    {
+      "id": "811",
+      "username": "user99@gmail.com",
+      "email": "user99@gmail.com",
+      "password": "4297f44b13955235245b2497399d7a93",
+      "fullname": "user99@gmail.com",
+      "gender": true,
+      "dob": "2025-02-27",
+      "status": true,
+      "role": 1
     }
   ],
   "order": [
