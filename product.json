@@ -315,7 +315,7 @@
       "password": "123456",
       "fullname": "Do Minh Tu",
       "gender": true,
-      "status": true,
+      "status": 0,
       "dob": "2024-07-19",
       "role": 0
     },
@@ -327,8 +327,8 @@
       "fullname": "Hieu",
       "gender": "male",
       "dob": "2024-07-25",
-      "status": true,
-      "role": 1
+      "status": 0,
+      "role": 0
     },
     {
       "id": "3",
@@ -420,6 +420,17 @@
       "dob": "2025-02-27",
       "status": true,
       "role": 1
+    },
+    {
+      "id": "8111",
+      "username": "duc",
+      "email": "ducvc172003@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "fullname": "duc vuong",
+      "gender": true,
+      "dob": "2025-03-12",
+      "status": 0,
+      "role": 0
     }
   ],
   "order": [

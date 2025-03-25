@@ -56,7 +56,7 @@ function SideBar() {
           >
             <span className="p-1">
               <i className="bi bi-people me-3 fs-5"></i>
-              <Link to="/admin/users" className="fs-5">
+              <Link to="/admin/userList" className="fs-5">
                 User
               </Link>
             </span>
@@ -67,8 +67,19 @@ function SideBar() {
           >
             <span className="p-1">
               <i className="bi bi-table me-3 fs-5"></i>
-              <Link to="/orders" className="fs-5">
+              <Link to="admin/orders" className="fs-5">
                 Orders
+              </Link>
+            </span>
+          </li>
+          <li
+            className={active === 1 ? "active nav-item p-2" : "nav-item p-2"}
+            onClick={(e) => setActive(1)}
+          >
+            <span className="p-1 f-5">
+              <i className="bi bi-speedometer2 me-3 fs-5"></i>
+              <Link to="/admin/problemList" className="fs-5">
+                Problems
               </Link>
             </span>
           </li>

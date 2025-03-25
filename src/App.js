@@ -12,6 +12,8 @@ import Userprofile from "./components/userprofile";
 import { ToastContainer } from "react-toastify";
 import StripeProvider from "./components/stripe";
 import CheckoutForm from "./components/CheckoutForm";
+import UserList from "./components/admin/User/UserList";
+import ProblemList from "./components/admin/Problem/ProblemList";
 function App() {
   return (
     <BrowserRouter>
@@ -33,6 +35,8 @@ function App() {
         <Route path="/admin" element={<Admin />}>
           <Route path="productList" element={<ProductList />} />
           <Route path="dashboard" element={<DashBoard />} />
+          <Route path="userList" element={<UserList />} />
+          <Route path="problemList" element={<ProblemList />} />
         </Route>
         <Route
           path="/checkout"

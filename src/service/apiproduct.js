@@ -136,6 +136,26 @@ async function GetAllOrders() {
     throw error;
   }
 }
+async function UpdateUser (id, updatedData) {
+  try {
+    const response = await axios.patch(`http://localhost:9999/user/${id}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating user:", error);
+    throw error;
+  }
+}
+async function GetProblems() {
+  try {
+    const response = await axios.get("http://localhost:9999/problems");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+}
+;
+
 
 export {
   GetProduct,
@@ -151,4 +171,6 @@ export {
   submitOrder,
   UpdateAdminProduct,
   GetAllOrders,
+  UpdateUser,
+  GetProblems
 };
