@@ -1,5 +1,6 @@
-import axios, { Axios } from "axios";
+import axios from "axios";
 
+// Các hàm hiện tại giữ nguyên
 async function GetProduct() {
   try {
     const response = await axios.get("http://localhost:9999/products");
@@ -8,6 +9,7 @@ async function GetProduct() {
     console.error("Error fetching product data:", error);
   }
 }
+
 async function GetCategory() {
   try {
     const response = await axios.get("http://localhost:9999/category");
@@ -16,14 +18,21 @@ async function GetCategory() {
     console.error("Error fetching category data:", error);
   }
 }
+
 async function GetUser() {
   try {
     const response = await axios.get("http://localhost:9999/user");
-    return response.data;
+    return response.data.map((user) => ({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    }));
   } catch (error) {
-    console.error("Error fetching category data:", error);
+    console.error("Error fetching user data:", error);
+    throw error;
   }
 }
+
 async function GetProductdt(id) {
   try {
     const response = await axios.get(`http://localhost:9999/products/${id}`);
@@ -32,6 +41,7 @@ async function GetProductdt(id) {
     console.error("Error fetching category data:", error);
   }
 }
+
 async function login(email, password) {
   try {
     const response = await axios.get(
@@ -47,6 +57,7 @@ async function login(email, password) {
     throw error;
   }
 }
+
 async function PostProduct(newProduct) {
   try {
     const respone = await axios.post(
@@ -64,17 +75,23 @@ async function DeletePost(id) {
   try {
     const response = await axios.delete(`http://localhost:9999/products/${id}`);
     return response.data;
-  } catch (error) { }
+  } catch (error) {}
 }
 
 async function GetUserdt(id) {
   try {
     const response = await axios.get(`http://localhost:9999/user/${id}`);
-    return response.data;
+    return {
+      id: response.data.id,
+      username: response.data.username,
+      email: response.data.email,
+    };
   } catch (error) {
-    console.error("Error fetching category data:", error);
+    console.error("Error fetching user details:", error);
+    throw error;
   }
 }
+
 const UpdateUserdt = async (id, userData) => {
   try {
     const response = await axios.put(
@@ -87,19 +104,21 @@ const UpdateUserdt = async (id, userData) => {
     throw error;
   }
 };
+
 async function updateProduct(updatedProducts) {
   try {
     const response = await axios.put(
       `http://localhost:9999/products/${updatedProducts.id}`,
       updatedProducts
     );
-    console.log("API Response:", response.data); 
+    console.log("API Response:", response.data);
     return response.data;
   } catch (error) {
     console.error("Error updating products:", error);
     throw error;
   }
 }
+
 async function submitOrder(order) {
   try {
     const response = await axios.post(`http://localhost:9999/order`, order, {
@@ -127,16 +146,45 @@ async function UpdateAdminProduct(id, updatedProduct) {
   }
 }
 
+async function GetAllOrders() {
+  try {
+    const response = await axios.get("http://localhost:9999/order");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+}
 
-  async function GetAllOrders ()  {
-    try {
-        const response = await axios.get('http://localhost:9999/order');
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching orders:', error);
-        throw error;
-    }
-};
+async function GetHighlightedProducts() {
+  try {
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => product.highlight === true);
+  } catch (error) {
+    console.error("Error fetching highlighted products:", error);
+    return [];
+  }
+}
+
+async function GetRegularProducts() {
+  try {
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => !product.highlight);
+  } catch (error) {
+    console.error("Error fetching regular products:", error);
+    return [];
+  }
+}
+
+async function GetProductsByCategory(categoryId) {
+  try {
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => product.catId == categoryId);
+  } catch (error) {
+    console.error("Error fetching products by category:", error);
+    return [];
+  }
+}
 
 export {
   GetProduct,
@@ -151,5 +199,8 @@ export {
   updateProduct,
   submitOrder,
   UpdateAdminProduct,
-  GetAllOrders
+  GetAllOrders,
+  GetHighlightedProducts,
+  GetRegularProducts,
+  GetProductsByCategory,
 };
