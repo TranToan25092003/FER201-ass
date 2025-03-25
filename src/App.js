@@ -14,6 +14,8 @@ import StripeProvider from "./components/stripe";
 import CheckoutForm from "./components/CheckoutForm";
 import UserList from "./components/admin/User/UserList";
 import ProblemList from "./components/admin/Problem/ProblemList";
+import Orders from "./components/admin/orders/Orders";
+
 function App() {
   return (
     <BrowserRouter>
@@ -37,6 +39,7 @@ function App() {
           <Route path="dashboard" element={<DashBoard />} />
           <Route path="userList" element={<UserList />} />
           <Route path="problemList" element={<ProblemList />} />
+          <Route path="orders" element={<Orders />} />
         </Route>
         <Route
           path="/checkout"

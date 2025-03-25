@@ -67,7 +67,7 @@ function SideBar() {
           >
             <span className="p-1">
               <i className="bi bi-table me-3 fs-5"></i>
-              <Link to="admin/orders" className="fs-5">
+              <Link to="/admin/orders" className="fs-5">
                 Orders
               </Link>
             </span>

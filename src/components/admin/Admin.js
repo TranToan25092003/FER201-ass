@@ -1,17 +1,26 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom"; // Thay json bằng Navigate
 import SideBar from "./SideBar";
 import Nav from "./Nav";
+import { toast } from "react-toastify";
 
 function Admin() {
   const [toggle, setToggle] = useState(false);
+  const navigate = useNavigate();
 
-  function Toggle() {
-    setToggle(!toggle);
+  // Lấy và kiểm tra user từ localStorage
+  let user;
+  try {
+    const storedUser = localStorage.getItem("accounts");
+    user = storedUser ? JSON.parse(storedUser) : null;
+  } catch (error) {
+    console.error("Error parsing user from localStorage:", error);
+    user = null;
   }
 
+  // Xử lý resize
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth > 768) {
@@ -23,6 +32,17 @@ function Admin() {
       window.removeEventListener("resize", handleSize);
     };
   }, []);
+
+  // Hàm toggle sidebar
+  const Toggle = () => {
+    setToggle(!toggle);
+  };
+
+  // Kiểm tra quyền và điều hướng
+  if (!user || user?.role !== 0) {
+    toast.error("Forbidden resource");
+    return <Navigate to="/login" />; // Sử dụng Navigate thay vì navigate()
+  }
 
   return (
     <div className="d-flex">
