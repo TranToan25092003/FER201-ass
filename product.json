@@ -307,13 +307,13 @@
       "highlight": true
     },
     {
-      "id": "68c3",
       "name": "test",
       "price": 11,
       "quantity": 11,
       "catId": 1,
-      "image": "https://res.cloudinary.com/dco0pwws7/image/upload/v1742964414/vtmspm1tt2abfhfs7mto.png",
-      "status": true
+      "image": "https://res.cloudinary.com/dco0pwws7/image/upload/v1742968405/ubsrhyia5a62p3msucoi.png",
+      "status": true,
+      "id": "68c3"
     }
   ],
   "user": [
@@ -450,7 +450,7 @@
       "gender": true,
       "dob": "2003-03-20",
       "status": true,
-      "role": 1
+      "role": 0
     }
   ],
   "order": [
