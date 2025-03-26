@@ -305,6 +305,15 @@
       "catId": 2,
       "description": "CPU: AMD Zen 2 4c/8t - GPU: 1.6 TFLOPs, RDNA 2 CUs - RAM: 16GB LPDDR5 - Storage: 512GB SSD",
       "highlight": true
+    },
+    {
+      "id": "68c3",
+      "name": "test",
+      "price": 11,
+      "quantity": 11,
+      "catId": 1,
+      "image": "https://res.cloudinary.com/dco0pwws7/image/upload/v1742964414/vtmspm1tt2abfhfs7mto.png",
+      "status": true
     }
   ],
   "user": [
@@ -430,6 +439,28 @@
       "gender": true,
       "dob": "2025-03-12",
       "status": 0,
+      "role": 0
+    },
+    {
+      "id": "81111",
+      "username": "bao",
+      "email": "ngnb3xx@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "fullname": "Nguyễn Quốc bảo",
+      "gender": true,
+      "dob": "2003-03-20",
+      "status": true,
+      "role": 0
+    },
+    {
+      "id": "811111",
+      "username": "baonguyenn203@gmail.com",
+      "email": "baonguyenn203@gmail.com",
+      "password": "a4a2270a5f371d3b21dbc81b39cbc08a",
+      "fullname": "Nguyễn Quốc bảo",
+      "gender": true,
+      "dob": "2003-03-20",
+      "status": true,
       "role": 0
     }
   ],
