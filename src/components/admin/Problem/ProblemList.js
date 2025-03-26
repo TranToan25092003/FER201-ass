@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Pagination, Col } from "react-bootstrap";
-import { GetProblems} from "../../../service/apiproduct";
+import { GetProblems } from "../../../service/apiproduct";
 
 function ProblemList() {
   const [problems, setProblems] = useState([]);
@@ -18,7 +18,10 @@ function ProblemList() {
 
   const indexOfLastProblem = currentPage * problemsPerPage;
   const indexOfFirstProblem = indexOfLastProblem - problemsPerPage;
-  const currentProblems = problems.slice(indexOfFirstProblem, indexOfLastProblem);
+  const currentProblems = problems.slice(
+    indexOfFirstProblem,
+    indexOfLastProblem
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 

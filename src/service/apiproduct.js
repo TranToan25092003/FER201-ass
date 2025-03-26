@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Các hàm hiện tại giữ nguyên
 async function GetProduct() {
   try {
     const response = await axios.get("http://localhost:9999/products");
@@ -16,14 +17,30 @@ async function GetCategory() {
     console.error("Error fetching category data:", error);
   }
 }
+async function GetProblems() {
+  try {
+    const response = await axios.get("http://localhost:9999/problems");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+}
+
 async function GetUser() {
   try {
     const response = await axios.get("http://localhost:9999/user");
-    return response.data;
+    return response.data.map((user) => ({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    }));
   } catch (error) {
-    console.error("Error fetching category data:", error);
+    console.error("Error fetching user data:", error);
+    throw error;
   }
 }
+
 async function GetProductdt(id) {
   try {
     const response = await axios.get(`http://localhost:9999/products/${id}`);
@@ -70,11 +87,17 @@ async function DeletePost(id) {
 async function GetUserdt(id) {
   try {
     const response = await axios.get(`http://localhost:9999/user/${id}`);
-    return response.data;
+    return {
+      id: response.data.id,
+      username: response.data.username,
+      email: response.data.email,
+    };
   } catch (error) {
-    console.error("Error fetching category data:", error);
+    console.error("Error fetching user details:", error);
+    throw error;
   }
 }
+
 const UpdateUserdt = async (id, userData) => {
   try {
     const response = await axios.put(
@@ -136,31 +159,55 @@ async function GetAllOrders() {
     throw error;
   }
 }
-async function UpdateUser (id, updatedData) {
+
+async function GetHighlightedProducts() {
   try {
-    const response = await axios.patch(`http://localhost:9999/user/${id}`, updatedData);
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => product.highlight === true);
+  } catch (error) {
+    console.error("Error fetching highlighted products:", error);
+    return [];
+  }
+}
+
+async function GetRegularProducts() {
+  try {
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => !product.highlight);
+  } catch (error) {
+    console.error("Error fetching regular products:", error);
+    return [];
+  }
+}
+
+async function GetProductsByCategory(categoryId) {
+  try {
+    const response = await axios.get("http://localhost:9999/products");
+    return response.data.filter((product) => product.catId == categoryId);
+  } catch (error) {
+    console.error("Error fetching products by category:", error);
+    return [];
+  }
+}
+async function UpdateUser(id, updatedData) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:9999/user/${id}`,
+      updatedData
+    );
     return response.data;
   } catch (error) {
     console.error("Error updating user:", error);
     throw error;
   }
 }
-async function GetProblems() {
-  try {
-    const response = await axios.get("http://localhost:9999/problems");
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching orders:", error);
-    throw error;
-  }
-}
-;
-
 
 export {
+  UpdateUser,
   GetProduct,
   GetCategory,
   GetProductdt,
+  GetProblems,
   login,
   GetUser,
   GetUserdt,
@@ -171,6 +218,7 @@ export {
   submitOrder,
   UpdateAdminProduct,
   GetAllOrders,
-  UpdateUser,
-  GetProblems
+  GetHighlightedProducts,
+  GetRegularProducts,
+  GetProductsByCategory,
 };
