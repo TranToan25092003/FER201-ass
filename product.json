@@ -443,17 +443,6 @@
     },
     {
       "id": "81111",
-      "username": "bao",
-      "email": "ngnb3xx@gmail.com",
-      "password": "e10adc3949ba59abbe56e057f20f883e",
-      "fullname": "Nguyễn Quốc bảo",
-      "gender": true,
-      "dob": "2003-03-20",
-      "status": true,
-      "role": 0
-    },
-    {
-      "id": "811111",
       "username": "baonguyenn203@gmail.com",
       "email": "baonguyenn203@gmail.com",
       "password": "a4a2270a5f371d3b21dbc81b39cbc08a",
@@ -461,7 +450,7 @@
       "gender": true,
       "dob": "2003-03-20",
       "status": true,
-      "role": 0
+      "role": 1
     }
   ],
   "order": [
