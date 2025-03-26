@@ -3,7 +3,7 @@ import { Container, Col, Form, Row, Button, Toast } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "../reusable/footer";
 import Header from "../reusable/header";
-import { register, GetUser } from "../../service/apiproduct"; // Ensure fetchAccounts is defined
+import { GetUser } from "../../service/apiproduct"; // Ensure GetUser is defined
 import md5 from "md5";
 
 const Register = () => {
@@ -13,13 +13,13 @@ const Register = () => {
   const [fullname, setFullname] = useState("");
   const [dob, setDob] = useState("");
   const [password, setPassword] = useState("");
-  const [gender, setGender] = useState(true); // Use strings for gender
+  const [gender, setGender] = useState(true); // Use boolean for gender
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertVariant, setAlertVariant] = useState("danger");
   const [account, setAccount] = useState([]);
 
-  // Fetch accounts on component mount
+  // Fetch existing accounts on component mount
   useEffect(() => {
     const getAccounts = async () => {
       try {
@@ -35,13 +35,28 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (account.some((acc) => acc.email === email)) {
-      alert("Email đã tồn tại. Vui lòng đăng ký lại.");
+    // Validate password strength
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setAlertVariant("danger");
+      setAlertMessage(
+        "Password must be at least 8 characters long, include at least 1 uppercase letter, 1 number, and 1 special character."
+      );
+      setShowAlert(true);
       return;
     }
 
+    // Check if email already exists
+    if (account.some((acc) => acc.email === email)) {
+      setAlertVariant("danger");
+      setAlertMessage("Email already exists. Please use a different email.");
+      setShowAlert(true);
+      return;
+    }
+
+    // Create new user object
     const newUser = {
-      id: account[account.length - 1].id + 1,
+      id: account.length > 0 ? account[account.length - 1].id + 1 : 1,
       username,
       email,
       password: md5(password),
@@ -51,6 +66,8 @@ const Register = () => {
       status: true,
       role: 1,
     };
+
+    // Send registration request
     fetch("http://localhost:9999/user", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -58,25 +75,22 @@ const Register = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Đăng ký không thành công.");
+          throw new Error("Registration failed.");
         }
         setAlertVariant("success");
-        setAlertMessage("Đăng ký thành công!");
+        setAlertMessage("Registration successful! Redirecting to login...");
         setShowAlert(true);
         setTimeout(() => {
           navigate("/login");
         }, 3000);
       })
       .catch((error) => {
-        console.error("Lỗi khi đăng ký:", error);
+        console.error("Registration error:", error);
         setAlertVariant("danger");
         setAlertMessage(
-          "Đã xảy ra lỗi trong quá trình đăng ký. Vui lòng thử lại sau."
+          "An error occurred during registration. Please try again later."
         );
         setShowAlert(true);
-        setTimeout(() => {
-          setShowAlert(false);
-        }, 2000);
       });
   };
 
@@ -89,19 +103,17 @@ const Register = () => {
       <Row style={{ paddingTop: "120px" }}>
         <Col md={6}>
           <h1>Register</h1>
-          {showAlert ? (
+          {showAlert && (
             <Toast
               className="toast-right"
               show={showAlert}
               onClose={() => setShowAlert(false)}
             >
               <Toast.Header>
-                <strong className="me-auto">Login</strong>
+                <strong className="me-auto">Notification</strong>
               </Toast.Header>
               <Toast.Body>{alertMessage}</Toast.Body>
             </Toast>
-          ) : (
-            <></>
           )}
           <br />
           <Form onSubmit={handleRegister}>
@@ -112,7 +124,7 @@ const Register = () => {
               <Col sm="10">
                 <Form.Control
                   type="email"
-                  placeholder="Email"
+                  placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -126,7 +138,7 @@ const Register = () => {
               <Col sm="10">
                 <Form.Control
                   type="text"
-                  placeholder="Username"
+                  placeholder="Enter your username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
@@ -140,7 +152,7 @@ const Register = () => {
               <Col sm="10">
                 <Form.Control
                   type="text"
-                  placeholder="Full name"
+                  placeholder="Enter your full name"
                   value={fullname}
                   onChange={(e) => setFullname(e.target.value)}
                   required
@@ -167,7 +179,7 @@ const Register = () => {
               <Col sm="10">
                 <Form.Control
                   type="password"
-                  placeholder="Password"
+                  placeholder="Enter a strong password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
@@ -196,11 +208,10 @@ const Register = () => {
             </Form.Group>
             <br />
 
-            <br />
-            <Button type="submit">Sign up</Button>
+            <Button type="submit">Sign Up</Button>
           </Form>
           <br />
-          <Link to={"/login"}>Already have an account?</Link>
+          <Link to={"/login"}>Already have an account? Log in</Link>
         </Col>
         <Col
           md={6}

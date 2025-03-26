@@ -81,21 +81,21 @@ function ProductList() {
           </tr>
         </thead>
         <tbody>
-          {currentProducts.map((product, index) => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>{product.price.toLocaleString("vi-VN")}</td>
+          {currentProducts?.map((product, index) => (
+            <tr key={product?.id}>
+              <td>{product?.id}</td>
+              <td>{product?.name}</td>
+              <td>{product?.price?.toLocaleString("vi-VN")}</td>
               <td>
                 <Image
-                  src={`/images/${product.images[0].name}`}
+                  src={`/images/${product?.images?.[0]?.name}`}
                   width="100"
                   thumbnail
-                  alt={product.name}
+                  alt={product?.name}
                 />
               </td>
-              <td>{product.quantity}</td>
-              <td>{category.find((ca) => ca.id == product.catId)?.name}</td>
+              <td>{product?.quantity}</td>
+              <td>{category?.find((ca) => ca?.id == product?.catId)?.name}</td>
               <td style={{ width: "10px", whiteSpace: "nowrap" }}>
                 <Button
                   variant="primary"
@@ -120,7 +120,7 @@ function ProductList() {
       <Col className="d-flex justify-content-center">
         <Pagination>
           {Array.from(
-            { length: Math.ceil(products.length / productsPerPage) },
+            { length: Math.ceil(products?.length / productsPerPage) },
             (_, index) => (
               <Pagination.Item
                 key={index + 1}
